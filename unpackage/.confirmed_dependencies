@@ -1,0 +1,37 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.pullToRefresh.js",
+			"images/slide-sample.png",
+			"js/mui.pullToRefresh.material.js",
+			"fonts/mui.ttf",
+			"images/my.png",
+			"data/news.json",
+			"images/act.png",
+			"js/h.js",
+			"js/common.js",
+			"images/live.png",
+			"js/mui.min.js",
+			"css/common.css",
+			"css/mui.min.css",
+			"js/template-web.js",
+			"images/news_active.png",
+			"detail-news.html"
+		],
+		"refer": [
+			"detail-news.html"
+		]
+	},
+	"detail-news.html": {
+		"resources": [
+			"fonts/mui-icons-extra.ttf",
+			"data/detail.json",
+			"js/detail.js",
+			"css/icons-extra.css",
+			"index.html"
+		],
+		"refer": [
+			"index.html"
+		]
+	}
+}

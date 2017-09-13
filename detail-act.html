@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>活动</title>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/h.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/icons-extra.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<style>
+			p{
+				color:#333;
+			}
+			.mui-input-group .mui-input-row:after,.mui-input-group:before,.mui-input-group:after{
+				height: 0;
+			}
+			.mui-input-group{
+				border:1px solid #eee;
+				border-radius: 5px;
+			}
+		</style>
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				swipeBack:true
+			});
+		</script>
+	</head>
+	<body style="background-color:#F7F7F7;">
+		<div id="content-detail" style="padding-bottom: 55px;">
+			
+		</div>
+		<div id="act-layer" class="poplayer">
+			<div class="mui-content-padded">
+				<div style="padding: 20px 0;text-align: center;">
+					<h4>输入报名信息</h4>
+				</div>
+				<div class="mui-input-group" style="padding: 5px 0;">
+					<div class="mui-input-row" style="height: 36px;">
+						<label style="padding: 6px;width: 17%;border-right: 1px solid #eee;text-align: center;">
+							<img src="images/user.png" alt="" style="width: 22px;" />
+						</label>
+						<input type="text" placeholder="请输入您的姓名" style="width: 78%;height: 36px;">
+						<div style="position: absolute;right: 0;color:#ff5757;right: 8px;line-height: 2.5;">*</div>
+					</div>
+				</div>
+				<div class="mui-input-group" style="margin-top: 10px;padding: 5px 0;">
+					<div class="mui-input-row" style="height: 36px;">
+						<label style="padding: 6px;width: 17%;border-right: 1px solid #eee;text-align: center;">
+							<img src="images/phone.png" alt="" style="width: 22px;" />
+						</label>
+						<input type="tel" placeholder="请输入您的手机号" style="width: 78%;height: 36px;">
+						<div style="position: absolute;right: 0;color:#ff5757;right: 8px;line-height: 2.5;">*</div>
+					</div>
+				</div>
+				
+				<div class="mui-input-row" style="margin: 10px 0;">
+					<textarea style="border:1px solid #eee;border-radius: 5px;margin-bottom: 0;" id="textarea" rows="5" placeholder="备注信息"></textarea>
+				</div>
+				<div style="text-align: center;color:#ff5757;font-size: 14px;">
+					<span class="mui-icon mui-icon-info" style="font-size: 16px;"></span> 报名信息不可修改请认真填写
+				</div>
+				<button type="button" class="mui-btn mui-btn-danger mui-btn-block" style="padding: 5px 0;margin-top: 15px;border-color: #ff5757;background: #ff5757;border-radius: 5px;">提交报名</button>
+				<button type="button" class="mui-btn mui-btn-block closelayer" style="color: #999;padding: 5px 0;border-radius: 5px;border-color: #eee;">我想先逛逛</button>
+			</div>
+		</div>
+		
+		<div id="success-layer" class="poplayer">
+			<div class="mui-content-padded" style="margin: 20vw;">
+				<div style="padding: 20px 0;text-align: center;">
+					<h2 style="color: #ff5c5c;">报名成功</h2>
+				</div>
+				<div style="text-align: center;">
+					<img src="images/success.png" alt="" style="width: 100%;" />
+				</div>
+				<div style="text-align: center;color:#333;font-size: 14px;">
+					敬请等候官方联系人通知
+				</div>
+				<button type="button" class="mui-btn mui-btn-outlined mui-btn-block closelayer" style="padding: 5px 0;margin-top: 15px;border-radius: 25px;color: #333;border-color: #666;">我知道了</button>
+				<button type="button" class="mui-btn mui-btn-danger mui-btn-block mui-btn-outlined closelayer" style="color: #ff5757;border-color: #ff5757;padding: 5px 0;border-radius: 25px;">再去逛逛</button>
+			</div>
+		</div>
+		
+		<script src="js/template-web.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/detail.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script id="tpl-detail" type="text/html">
+			<div class="mui-card" style="border-radius:initial;box-shadow:none;margin: 0;padding: 0;">
+				<!--内容区-->
+				<div class="mui-card-content" style="overflow: hidden;">
+					<img src="{{thumb}}" alt="" width="100%" style="display: block;" />
+					<div class="mui-card-content-inner" style="padding: 10px;">
+						<h4 style="color: #333333;line-height: 1.5;">
+							{{title}}
+							{{if status == 0}}
+		                	<button type="button" class="mui-btn mui-btn-warning" style="padding: 2px 12px;border-radius: 20px;">
+								即将开始
+							</button>
+		                	{{else if status == 1}}
+		                	<button type="button" class="mui-btn mui-btn-danger" style="padding: 2px 12px;background-color:#ff5757;border-color: #ff5757;border-radius: 20px;">
+								报名中
+							</button>
+							{{else}}
+							<button type="button" class="mui-btn mui-btn-outlined" style="padding: 2px 12px;color:#666;border-color: #aaa;border-radius: 20px;background: none;">
+								已结束
+							</button>
+							{{/if}}
+						</h4>
+						<div style="margin-top:10px;border-top: 1px solid #f7f7f7;color:#666;padding-top: 5px;font-size: 14px;">
+				        	<div>
+				        		<img src="images/times.png" alt="" width="14" style="vertical-align: middle;" />
+				        		<span style="vertical-align: middle;">{{times}}</span>
+				        	</div>
+				        	<div>
+				        		<img src="images/address.png" alt="" width="14" style="vertical-align: middle;" />
+				        		<span style="vertical-align: middle;">{{address}}</span>
+				        	</div>
+				        </div>
+					</div>
+				</div>
+			</div>
+			<div class="mui-card" style="border-radius:initial;box-shadow:none;margin: 10px 0 0 0;padding: 10px;">
+				<div style="color: #999;">详细说明</div>
+				<div>{{@content}}</div>
+			</div>
+			<div id="send-box">
+				<div>
+					<span onclick="history.back();" class="mui-icon mui-icon-arrowthinleft" style="cursor:pointer;font-weight: bold;color:#999;"></span>
+				</div>
+				<div style="flex: 1;padding-left:10px;">
+					<!--<button type="button" class="mui-btn mui-btn-danger mui-btn-block" style="padding: 5px 0;margin:0;">立即报名</button>-->
+					{{if status == 0}}
+                	<button type="button" data-status="{{status}}" class="btn-status mui-btn mui-btn-warning mui-btn-outlined mui-btn-block" style="padding: 5px 0;margin:0;/*color:#ff5757;border-color: #ff5757;*/border-radius: 20px;">
+						即将开始
+					</button>
+                	{{else if status == 1}}
+                	<button type="button" data-status="{{status}}" class="btn-status mui-btn mui-btn-danger mui-btn-block" style="padding: 5px 0;margin:0;background-color:#ff5757;border-color: #ff5757;border-radius: 20px;">
+						立即报名
+					</button>
+					{{else}}
+					<button type="button" data-status="{{status}}" class="btn-status mui-btn mui-btn-outlined mui-btn-block" style="padding: 5px 0;margin:0;color:#666;border-color: #aaa;border-radius: 20px;">
+						已结束
+					</button>
+					{{/if}}
+				</div>
+			</div>
+		</script>
+	
+		
+		<script id="tpl-actlayer" type="text/html">
+			
+		</script>
+	</body>
+</html>

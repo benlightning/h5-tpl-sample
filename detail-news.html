@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>资讯</title>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/h.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/icons-extra.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<style>
+			p{
+				color:#333;
+			}
+		</style>
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				swipeBack:true
+			});
+		</script>
+	</head>
+	<body style="background-color:#F7F7F7;">
+		<div id="content-detail" style="background-color:#fff;">
+			
+		</div>
+		<div id="comments-box" style="padding-bottom: 55px;">
+			
+		</div>
+		<div id="comments-layer" class="poplayer">
+			
+		</div>
+		<div id="send-box">
+			<div>
+				<span onclick="history.back();" class="mui-icon mui-icon-arrowthinleft" style="cursor:pointer;font-weight: bold;color:#999;"></span>
+			</div>
+			<div style="flex: 1;padding:0 10px;">
+				<input type="text" style="background-color: #f9f9f9;border: none;" />
+			</div>
+			<div>
+				<a class="sendmsg" style="color:#999;font-size: 16px;"><span class="mui-icon mui-icon-chat" style="color:#999;font-size: 16px;"></span> 评论</a>
+				<a class="tofav" style="color:#999;font-size: 16px;"><span class="mui-icon mui-icon-star" style="color:#999;font-size: 20px;"></span>收藏</a>
+			</div>
+		</div>
+		<script src="js/template-web.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/detail.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script id="tpl-detail" type="text/html">
+			<div class="mui-card" style="border-radius:initial;box-shadow:none;margin-top: 0;padding-top: 10px;">
+				<h4 style="color: #333333;font-weight: 500;">{{title}}</h4>
+				<div class="mui-card-header mui-card-media" style="padding:10px 0;">
+					<img src="{{avatar}}" style="border-radius: 50%;width: 30px;height: 30px;">
+					<div class="mui-media-body" style="height: 30px;line-height: 30px;font-size: 17px;">
+						{{author}}
+						<p style="float: right;color: #999;">{{time}}</p>
+					</div>
+				</div>
+				<!--内容区-->
+				<div class="mui-card-content" style="overflow: hidden;">
+					<img src="{{thumb}}" alt="" width="100%" style="display: block;" />
+					<div class="mui-card-content-inner" style="padding:10px 0;">
+						{{@content}}
+					</div>
+				</div>
+			</div>
+		</script>
+		<script id="tpl-comments" type="text/html">
+			<!--<div id="pullrefresh" style="position: relative;height: 1;padding-bottom: 65px;" class="mui-scroll-wrapper">
+				<div class="mui-scroll mui-scroll-updown">-->
+					<ul class="mui-table-view">
+						{{include 'tpl-list'}}
+					</ul>
+					<a class="showmore">查看更多评论</a>
+				<!--</div>
+			</div>-->
+		</script>
+		
+		<script id="tpl-list" type="text/html">
+			{{each comments}}
+		    <li class="mui-table-view-cell mui-media" style="margin-top:0;border-bottom: 1px solid #eee;">
+		            <img class="mui-media-object mui-pull-left" src="{{$value.avatar}}" style="width: 40px;height: 40px;border-radius: 50%;">
+		            <div class="mui-media-body" style="color: #ac8686;">
+		                {{$value.nickname}}
+		                <div style="float: right;color:#999;font-size: 14px;" class="btn-like">
+		                	<span class="mui-icon-extra mui-icon-extra-like" style="font-size: 14px;color:#bbbbbb;/*#ff5757*/"></span> {{$value.likenum}}
+		                </div>
+		                <p class='mui-ellipsis' style="color: #a9a9a9;">{{$value.time}}</p>
+		                <div style="color: #333;margin-top: 10px;">{{$value.message}}</div>
+		            </div>
+		    </li>
+		    {{/each}}
+		</script>
+		
+		<script id="tpl-cmtlayer" type="text/html">
+			<div class="cmt-header">
+				全部评论（{{cmtcount}}） <span style="float:right;cursor: pointer;" class="closelayer">关闭</span>
+			</div>
+			<div id="pullrefresh" style="position: relative;height: 100%;padding-bottom: 41px;" class="mui-scroll-wrapper">
+				<div class="mui-scroll mui-scroll-updown">
+					<ul class="mui-table-view">
+						{{include 'tpl-list'}}
+					</ul>
+				</div>
+			</div>
+		</script>
+	</body>
+</html>

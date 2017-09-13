@@ -1,0 +1,28 @@
+{
+	"catalog":[
+		{"id":1,"name":"推荐"},
+		{"id":2,"name":"热点"},
+		{"id":3,"name":"北京"},
+		{"id":4,"name":"社会"},
+		{"id":5,"name":"娱乐"},
+		{"id":6,"name":"科技"}
+	],
+	"slider":[
+		{"id":1,"src":"images/slide-sample.png","url":""},
+		{"id":2,"src":"images/slide-sample.png","url":""}
+	],
+	"list":[
+		{"id":1,"title":"目睹事发地点","thumb":"images/slide-sample.png","author":"人人呢","avatar":"images/my.png","time":"10秒前","cmtnum":10,"viewnum":20,"status":0,"times":"2017.09.09 12:00-09.10 12:00","address":"陕西省西安市xxxx"},
+		{"id":2,"title":"目睹事发地点","thumb":"images/slide-sample.png","author":"人人呢","avatar":"images/my.png","time":"10秒前","cmtnum":10,"viewnum":20,"status":1,"times":"2017.09.09 12:00-09.10 12:00","address":"陕西省西安市xxxx"},
+		{"id":3,"title":"目睹事发地点","thumb":"images/slide-sample.png","author":"人人呢","avatar":"images/my.png","time":"10秒前","cmtnum":10,"viewnum":20,"status":2,"times":"2017.09.09 12:00-09.10 12:00","address":"陕西省西安市xxxx"},
+		{"id":4,"title":"目睹事发地点","thumb":"images/slide-sample.png","author":"人人呢","avatar":"images/my.png","time":"10秒前","cmtnum":10,"viewnum":20,"status":2,"times":"2017.09.09 12:00-09.10 12:00","address":"陕西省西安市xxxx"},
+		{"id":5,"title":"目睹事发地点","thumb":"images/slide-sample.png","author":"人人呢","avatar":"images/my.png","time":"10秒前","cmtnum":10,"viewnum":20,"status":1,"times":"2017.09.09 12:00-09.10 12:00","address":"陕西省西安市xxxx"},
+		{"id":6,"title":"目睹事发地点","thumb":"images/slide-sample.png","author":"人人呢","avatar":"images/my.png","time":"10秒前","cmtnum":10,"viewnum":20,"status":2,"times":"2017.09.09 12:00-09.10 12:00","address":"陕西省西安市xxxx"},
+		{"id":7,"title":"目睹事发地点","thumb":"images/slide-sample.png","author":"人人呢","avatar":"images/my.png","time":"10秒前","cmtnum":10,"viewnum":20,"status":0,"times":"2017.09.09 12:00-09.10 12:00","address":"陕西省西安市xxxx"},
+		{"id":8,"title":"目睹事发地点","thumb":"images/slide-sample.png","author":"人人呢","avatar":"images/my.png","time":"10秒前","cmtnum":10,"viewnum":20,"status":0,"times":"2017.09.09 12:00-09.10 12:00","address":"陕西省西安市xxxx"},
+		{"id":9,"title":"目睹事发地点","thumb":"images/slide-sample.png","author":"人人呢","avatar":"images/my.png","time":"10秒前","cmtnum":10,"viewnum":20,"status":0,"times":"2017.09.09 12:00-09.10 12:00","address":"陕西省西安市xxxx"},
+		{"id":10,"title":"目睹事发地点","thumb":"images/slide-sample.png","author":"人人呢","avatar":"images/my.png","time":"10秒前","cmtnum":10,"viewnum":20,"status":0,"times":"2017.09.09 12:00-09.10 12:00","address":"陕西省西安市xxxx"},
+		{"id":11,"title":"目睹事发地点","thumb":"images/slide-sample.png","author":"人人呢","avatar":"images/my.png","time":"10秒前","cmtnum":10,"viewnum":20,"status":0,"times":"2017.09.09 12:00-09.10 12:00","address":"陕西省西安市xxxx"},
+		{"id":12,"title":"防守对方的手","thumb":"images/slide-sample.png","author":"对对对","avatar":"images/my.png","time":"20秒前","cmtnum":20,"viewnum":20,"status":0,"times":"2017.09.09 12:00-09.10 12:00","address":"陕西省西安市xxxx"}
+	]
+}

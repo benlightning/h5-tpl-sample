@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/h.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				swipeBack:true
+			});
+
+		</script>
+	</head>
+
+	<body style="background-color:#F7F7F7;">
+		<div id="content">
+
+		</div>
+		<div id="comments-layer" class="poplayer">
+			
+		</div>
+		<nav class="mui-bar mui-bar-tab" id="main-nav">
+			<a class="mui-tab-item" href="#news">
+				<span class="mui-icon icon-news">
+				</span>
+				<span class="mui-tab-label">资讯</span>
+			</a>
+			<a class="mui-tab-item" href="#act">
+				<span class="mui-icon icon-act">
+					<!--<span class="mui-badge">9</span>-->
+				</span>
+				<span class="mui-tab-label">活动</span>
+			</a>
+			<a class="mui-tab-item" href="#live">
+				<span class="mui-icon icon-live">
+				</span>
+				<span class="mui-tab-label">直播</span>
+			</a>
+			<a class="mui-tab-item" href="#my">
+				<span class="mui-icon icon-my">
+				</span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		<script src="js/template-web.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+
+		<!--资讯模版开始-->
+		<script id="tpl-news" type="text/html">
+			<div id="header-nav" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted whitebg">
+			    <div class="mui-scroll">
+			    	 <a class="mui-control-item {{if catalogid==0}}mui-active{{/if}}" data-id="0">
+			            全部
+			        </a>
+			    	{{each catalog}}
+					    <a class="mui-control-item {{if catalogid==$value.id}}mui-active{{/if}}" data-id="{{$value.id}}">
+				            {{$value.name}}
+				        </a>
+					{{/each}}
+			    </div>
+			</div>
+			
+			<!--轮播图开始-->
+			{{if isindex}}
+			{{set pullHeight = '65vh'}}
+			<div class="mui-slider">
+			  <div class="mui-slider-group mui-slider-loop">
+			  	<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="{{slider[slider.length-1].src}}" /></a></div>
+			  	{{each slider}}
+			    <div class="mui-slider-item">
+			      <a>
+			      	<img src="{{$value.src}}" alt="" />
+			      </a>
+			    </div>
+			    {{/each}}
+			    <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="{{slider[0].src}}" /></a></div>
+			  </div>
+			  <div class="mui-slider-indicator">
+				<!--<div class="mui-indicator mui-active"></div>-->
+				{{each slider}}
+				<div class="mui-indicator {{if $index == 0}}mui-active{{/if}}"></div>
+				{{/each}}
+				</div>
+			</div>
+			{{else}}
+			{{set pullHeight = '92vh'}}
+			{{/if}}
+			
+			<!--列表开始-->
+			<div id="pullrefresh" style="position: relative;height: {{pullHeight}};padding-bottom: 65px;" class="mui-scroll-wrapper">
+				<div class="mui-scroll mui-scroll-updown">
+						<ul class="mui-table-view">
+							{{include 'tpl-news-list'}}
+						</ul>
+				</div>
+			</div>
+		</script>
+		<script id="tpl-news-list" type="text/html">
+			{{each list}}
+		    <li class="mui-table-view-cell mui-media" >
+		        <a onclick="location.href='detail-news.html?id={{$value.id}}&type=news'">
+		            <img class="mui-media-object mui-pull-left" src="{{$value.thumb}}">
+		            <div class="mui-media-body mui-media-body-flex">
+		                <p class='mui-ellipsis-2' style="font-size: 17px;color:#333;">{{$value.title}}</p>
+		                <div style="color:#999;font-size: 14px;">
+		                	{{$value.author}} {{$value.time}}
+		                	<p style="float:right;">
+		                		<span class="mui-icon mui-icon-chat" style="font-size: 14px;"></span>
+		                		{{$value.cmtnum}}
+		                	</p>
+		                </div>
+		            </div>
+		        </a>
+		    </li>
+		    {{/each}}
+		</script>
+		<!--/资讯模版结束-->
+		
+		<!--活动模版开始-->
+		<script id="tpl-act" type="text/html">
+			<div id="header-nav" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted whitebg">
+			    <div class="mui-scroll">
+			    	 <a class="mui-control-item {{if catalogid==0}}mui-active{{/if}}" data-id="0">
+			            全部
+			        </a>
+			    	{{each catalog}}
+					    <a class="mui-control-item {{if catalogid==$value.id}}mui-active{{/if}}" data-id="{{$value.id}}">
+				            {{$value.name}}
+				        </a>
+					{{/each}}
+			    </div>
+			</div>
+			
+			<!--列表开始-->
+			<div id="pullrefresh" style="position: relative;height: 92vh;padding-bottom: 65px;" class="mui-scroll-wrapper">
+				<div class="mui-scroll mui-scroll-updown">
+						<ul class="mui-table-view">
+							{{include 'tpl-act-list'}}
+						</ul>
+				</div>
+			</div>
+		</script>
+		<script id="tpl-act-list" type="text/html">
+			{{each list}}
+		    <li class="mui-table-view-cell mui-media">
+		        <a onclick="location.href='detail-act.html?id={{$value.id}}&type=act';">
+		            <img class="mui-media-object mui-pull-left" src="{{$value.thumb}}" style="border-radius: 5px;">
+		            <div class="mui-media-body mui-media-body-flex">
+		                <p class='mui-ellipsis-2' style="font-size: 17px;color:#333;">{{$value.title}}</p>
+		                <div style="color:#999;font-size: 14px;">
+		                	<!--0即将开始，1报名中，2已结束-->
+		                	{{if $value.status == 0}}
+		                	<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined" style="padding: 2px 12px;color:#ff5757;border-color: #ff5757;border-radius: 20px;">
+								即将开始
+							</button>
+		                	{{else if $value.status == 1}}
+		                	<button type="button" class="mui-btn mui-btn-danger" style="padding: 2px 12px;background-color:#ff5757;border-color: #ff5757;border-radius: 20px;">
+								报名中
+							</button>
+							{{else}}
+							<button type="button" class="mui-btn mui-btn-outlined" style="padding: 2px 12px;color:#666;border-color: #aaa;border-radius: 20px;">
+								已结束
+							</button>
+							{{/if}}
+		                </div>
+		            </div>
+		        </a>
+		        <div style="margin-top:10px;border-top: 1px solid #f7f7f7;color:#666;padding-top: 5px;font-size: 14px;">
+		        	<div>
+		        		<img src="images/times.png" alt="" width="14" style="vertical-align: middle;" />
+		        		<span style="vertical-align: middle;">{{$value.times}}</span>
+		        	</div>
+		        	<div>
+		        		<img src="images/address.png" alt="" width="14" style="vertical-align: middle;" />
+		        		<span style="vertical-align: middle;">{{$value.address}}</span>
+		        	</div>
+		        </div>
+		    </li>
+		    {{/each}}
+		</script>
+		<!--/活动模版结束-->
+		
+		<!--直播模版开始-->
+		<script id="tpl-live" type="text/html">
+			<div id="header-nav" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted whitebg">
+			    <div class="mui-scroll">
+			    	 <a class="mui-control-item {{if catalogid==0}}mui-active{{/if}}" data-id="0">
+			            全部
+			        </a>
+			    	{{each catalog}}
+					    <a class="mui-control-item {{if catalogid==$value.id}}mui-active{{/if}}" data-id="{{$value.id}}">
+				            {{$value.name}}
+				        </a>
+					{{/each}}
+			    </div>
+			</div>
+			
+			<!--列表开始-->
+			<div id="pullrefresh" style="position: relative;height: 92vh;padding-bottom: 65px;" class="mui-scroll-wrapper">
+				<div class="mui-scroll mui-scroll-updown">
+						<ul class="mui-table-view">
+							{{include 'tpl-live-list'}}
+						</ul>
+				</div>
+			</div>
+		</script>
+		<script id="tpl-live-list" type="text/html">
+			{{each list}}
+		    <li>
+		    <div class="mui-card" style="margin: 5px 0 0 0;border-radius:initial;box-shadow:none;">
+				<!--内容区-->
+				<div class="mui-card-content" style="overflow: hidden;">
+					<img src="{{$value.thumb}}" alt="" width="100%" style="display: block;" />
+					<a onclick="location.href='detail-live.html?id={{$value.id}}&type=live';">
+					<div style="background: rgba(0,0,0,.5);width: 100%;height: 100%;position: absolute;top:0;left:0;">
+						<img src="images/play.png" alt="" style="cursor:pointer;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);" />
+					</div>
+					</a>
+				</div>
+				<!--页脚，放置补充信息或支持的操作-->
+				<div class="mui-card-footer">
+					<div>
+						<img src="{{$value.avatar}}" class="mui-pull-left" width="20" style="border-radius: 50%;margin-right: 5px;">
+						<div class="mui-media-body">
+							{{$value.author}}
+						</div>
+					</div>
+					<div style="color: #999;">
+						<span class="mui-icon mui-icon-chat" style="color: #bbbbbb;font-size: 14px;"></span>{{$value.cmtnum}}
+						<span class="mui-icon mui-icon-eye" style="color: #bbbbbb;font-size: 16px;"></span>{{$value.viewnum}}
+					</div>
+				</div>
+			</div>
+			</li>
+		    {{/each}}
+		</script>
+		<!--/直播模版结束-->
+		
+		<!--我的 模版开始-->
+		<script id="tpl-my" type="text/html">
+			<style>
+				.mui-table-view-cell:after{
+					background-color:#eee;
+				}
+			</style>
+			<div class="my-header">
+				<div style="color: #666;">您尚未登录，请先登录</div>
+				<div style="position: relative;">
+					<div style="width: 70%;border-bottom: 1px solid #eee;position: absolute;top:50%;left:15%;"></div>
+					<img src="images/login.png" alt="" style="display: inline-block;width: 20%;position: relative;" />
+				</div>
+				<div style="color: #999;font-size: 14px;">微信登录</div>
+			</div>
+			<ul class="mui-table-view mui-table-view-chevron">
+				 <li class="mui-table-view-cell mui-media">
+				 	<a class="mui-navigate-right showmy" data-type="cmt">
+				 	<img src="images/chat.png" class="mui-media-object mui-pull-left" alt="" style="width: 23px;height: auto;" />
+				 	<div class="mui-media-body">我的评论</div>
+				 	</a>
+				 </li>
+		         <li class="mui-table-view-cell" style="margin-top: 0;">
+		         	<a class="mui-navigate-right showmy" data-type="sub">
+		         	<img src="images/rss.png" class="mui-media-object mui-pull-left" alt="" style="width: 23px;height: auto;" />
+		         	<div class="mui-media-body">我的订阅</div>
+		         	</a>
+		         </li>
+		         <li class="mui-table-view-cell" style="margin-top: 0;">
+		         	<a class="mui-navigate-right showmy" data-type="fav">
+		         	<img src="images/fav.png" class="mui-media-object mui-pull-left" alt="" style="width: 23px;height: auto;" />
+		         	<div class="mui-media-body">我的收藏</div>
+		         	</a>
+		         </li>
+			</ul>
+		</script>
+		
+		<script id="tpl-mylayer" type="text/html">
+			<!--我的评论模版-->
+			<div class="cmt-header">
+				我的评论（{{count}}） <span style="float:right;cursor: pointer;" class="closelayer">关闭</span>
+			</div>
+			<div id="pullrefresh" style="position: relative;height: 100%;padding-bottom: 41px;" class="mui-scroll-wrapper">
+				<div class="mui-scroll mui-scroll-updownmy">
+					<ul class="mui-table-view">
+						{{include 'tpl-list'}}
+					</ul>
+				</div>
+			</div>
+		</script>
+		<script id="tpl-list" type="text/html">
+			{{each comments}}
+		    <li class="mui-table-view-cell mui-media" style="margin-top:0;border-bottom: 1px solid #eee;">
+		            <img class="mui-media-object mui-pull-left" src="{{$value.avatar}}" style="width: 40px;height: 40px;border-radius: 50%;">
+		            <div class="mui-media-body" style="color: #ac8686;">
+		                {{$value.nickname}}
+		                <div style="float: right;color:#999;font-size: 14px;" class="btn-like">
+		                	<span class="mui-icon-extra mui-icon-extra-like" style="font-size: 14px;color:#bbbbbb;/*#ff5757*/"></span> {{$value.likenum}}
+		                </div>
+		                <p class='mui-ellipsis' style="color: #a9a9a9;">{{$value.time}}</p>
+		                <div style="color: #333;margin-top: 10px;">{{$value.message}}</div>
+		            </div>
+		    </li>
+		    {{/each}}
+		</script>
+		<!--/我的 模版结束-->
+	</body>
+
+</html>

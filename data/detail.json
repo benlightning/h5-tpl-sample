@@ -1,0 +1,41 @@
+{
+	"code":1,
+	"data":{
+		"detail":{
+			"title":"标题",
+			"avatar":"images/my.png",
+			"author":"嘻嘻嘻",
+			"time":"2017-09-09 12:00",
+			"thumb":"images/slide-sample.png",
+			"content":"<p class=\"111\">内容内容内容内容内容</p>",
+			"status":1,
+			"times":"2017.09.09 12:00-09.10 12:00",
+			"address":"陕西省西安市xxxx",
+			"starttime":"09:00开始"
+		},
+		"comments":[
+			{
+				"avatar":"images/my.png",
+				"nickname":"dddd",
+				"time":"1分钟前",
+				"likenum":10,
+				"message":"评论评论"
+			},
+			{
+				"avatar":"images/my.png",
+				"nickname":"dddd",
+				"time":"1分钟前",
+				"likenum":10,
+				"message":"评论评论"
+			},
+			{
+				"avatar":"images/my.png",
+				"nickname":"dddd",
+				"time":"1分钟前",
+				"likenum":10,
+				"message":"评论评论"
+			}
+		],
+		"cmtcount":30
+	}
+}
