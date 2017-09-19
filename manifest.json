@@ -224,6 +224,19 @@
 				],
 				"refer": [],
 				"priority": 0
+			},
+			"detail-live.html": {
+				"resources": [
+					"js/layer_mobile/layer.js",
+					"images/sub.png",
+					"data/detail.json",
+					"js/layer_mobile/need/layer.css",
+					"js/detail.js",
+					"css/icons-extra.css",
+					"images/favplus.png"
+				],
+				"refer": [],
+				"priority": 0
 			}
 		},
 		"idle": {
